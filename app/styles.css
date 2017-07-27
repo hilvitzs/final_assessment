@@ -1,4 +1,52 @@
 body {
   height: 100%;
   width: 100%;
+  position: relative;
+}
+
+h1 {
+  margin: auto;
+  text-align: center;
+}
+
+#inventory-section {
+  border: 1px solid black;
+  margin: auto;
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#inventory-item {
+  border: 1px solid black;
+  width: 33%;
+}
+
+#addtocart-button {
+  width: 100%;
+}
+
+#item-image {
+  width: 100%;
+}
+
+div {
+  border: 1px solid black;
+}
+
+#order-history, #cart {
+  border: 1px solid black;
+  height: 80%;
+  width: 10%;
+  position: absolute;
+  top: 10%;
+}
+
+#cart {
+  right: 0;
+}
+
+.hidden {
+  display: none;
 }
