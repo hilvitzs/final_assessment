@@ -36,20 +36,30 @@ h1 {
   width: 100%;
 }
 
-div {
+.expand-button {
   border: 1px solid black;
 }
 
-#order-history, #cart {
+#order-history, #cart, #item-section {
+  text-align: center;
   border: 1px solid black;
   height: 80%;
-  width: 10%;
+  width: 5%;
   position: absolute;
   top: 10%;
 }
 
 #cart {
+  right: 100px;
+}
+
+#item-section {
   right: 0;
+  width: 7%;
+}
+
+#cart-section {
+
 }
 
 .hidden {

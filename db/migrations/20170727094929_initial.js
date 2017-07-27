@@ -12,6 +12,7 @@ exports.up = function(knex, Promise) {
       table.increments('id').primary();
       table.string('total_price');
       table.string('order_date');
+      table.timestamps(true, true);
     })
   ])
 };

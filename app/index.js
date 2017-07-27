@@ -70,15 +70,49 @@ const getCartItems = () => {
       })
 
       let total = price.reduce((a, b) => a + b, 0);
-      $('#total').text(total)
+      $('#total').text(`Total: $${total}`)
 
   }
 }
 
-
 $('.expand-button').on('click', () => {
-  $('.cart-items').toggleClass('hidden')
+  $('#item-section').toggleClass('hidden')
+})
+
+const getOrders = () => {
+  fetch('/api/v1/order_history', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+  })
+  .then(response => response.json())
+  .then(orders => {
+    orders.map(order => {
+      return $('.order-section').append(`
+        <div>
+          <p>${order.total_price}</p>
+          <p>${order.created_at}</p>
+        </div>
+        `)
+      })
+  })
+}
+
+$('#checkout-button').on('click', () => {
+  const total = $('#total').text();
+
+  fetch('/api/v1/order_history', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      total_price: total,
+    })
+  })
+  .catch(error => console.log(error);)
+
+  getOrders();
 })
 
 
-window.onload = getInventoryItems(), getCartItems();
+
+
+window.onload = getInventoryItems(), getCartItems(), getOrders();

@@ -11,18 +11,20 @@
       <div class="expand-button">+</div>
       <p>Order History</p>
     </section>
+    <section class="order-section"></section>
     <section id="inventory-section"></section>
-    <section id="cart">
-      <div class="expand-button">+</div>
-      <div class="cart-headers">
-        <h1>Cart</h1>
+    <article id="cart-article">
+      <section id="cart">
+        <section class="expand-button">+</section>
+        <p>Cart</p>
+      </section>
+      <section id="item-section">
         <h2>Items</h2>
-        <div class="cart-items">
-        </div>
+        <section class="cart-items">
+        </section>
         <p id="total"></p>
-      </div>
-      <p>Cart</p>
-    </section>
+        <button id="checkout-button">Checkout and Purchase</button>
+    </article>
   </body>
   <script>window.jQuery || document.write('<script src="./jquery-3.2.1.min.js"><\/script>')</script>
   <script src="index.js" type="text/javascript"></script>
