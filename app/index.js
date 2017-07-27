@@ -80,6 +80,8 @@ $('.expand-button').on('click', () => {
 })
 
 const getOrders = () => {
+  $('.order-section').empty();
+
   fetch('/api/v1/order_history', {
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
@@ -87,7 +89,7 @@ const getOrders = () => {
   .then(response => response.json())
   .then(orders => {
     orders.map(order => {
-      return $('.order-section').append(`
+      return $('.order-section').prepend(`
         <div>
           <p>${order.total_price}</p>
           <p>${order.created_at}</p>
@@ -98,18 +100,21 @@ const getOrders = () => {
 }
 
 $('#checkout-button').on('click', () => {
+  console.log('something');
   const total = $('#total').text();
 
-  fetch('/api/v1/order_history', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json'},
-    body: JSON.stringify({
-      total_price: total,
+  if(localStorage.length === 0) {
+    alert('There are no items in your cart')
+  } else {
+    fetch('/api/v1/order_history', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        total_price: total,
+      })
     })
-  })
-  .catch(error => console.log(error);)
-
-  getOrders();
+    .then(() => getOrders())
+  }
 })
 
 
