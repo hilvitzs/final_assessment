@@ -36,10 +36,15 @@ $('#inventory-section').on('click', '#addtocart-button', function() {
 
   const storeItem = JSON.stringify(newItemObject)
 
-  localStorage.setItem('cart', storeItem)
+  localStorage.setItem(title, storeItem)
 })
 
 $('.expand-button').on('click', () => {
+  if(localStorage.length === 0) {
+    $('h2').append(`
+      <div>There are no items in your cart</div>
+    `)
+  }
   const localStorageKeys = Object.keys(localStorage)
 
   const storageItems = localStorageKeys.map(key => {

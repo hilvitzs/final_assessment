@@ -51,7 +51,7 @@ app.get('/api/v1/order_history', (request, response) => {
   })
 })
 
-app.post('/api/v1/order_history', (request.response) => {
+app.post('/api/v1/order_history', (request, response) => {
   const order = request.body;
 
   database('order_history').insert(order, 'id')
