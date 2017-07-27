@@ -24,17 +24,19 @@ const prependInventoryItems = (array) => {
 
 
 $('#inventory-section').on('click', '#addtocart-button', function() {
+  let itemObject = {}
+
   const title = $(this).siblings('#title').text();
   const price = $(this).siblings('#price').text();
 
-  const itemObject = Object.assign({}, {
+  let newItemObject = Object.assign({}, itemObject, {
     title,
     price
   })
 
-  const storeItem = JSON.stringify(itemObject)
+  const storeItem = JSON.stringify(newItemObject)
 
-  localStorage.setItem(title, storeItem)
+  localStorage.setItem('cart', storeItem)
 })
 
 $('.expand-button').on('click', () => {
@@ -47,7 +49,7 @@ $('.expand-button').on('click', () => {
 
   storageItems.map(storageItem => {
     const parsedItem = JSON.parse(storageItem)
-    console.log(parsedItem);
+
     return $('h2').after(`
       <p>${parsedItem.title}</p>
       <p>${parsedItem.price}</p>

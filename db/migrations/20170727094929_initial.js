@@ -6,12 +6,19 @@ exports.up = function(knex, Promise) {
       table.string('description');
       table.string('image');
       table.decimal('price');
+    }),
+
+    knex.schema.createTable('order_history', (table) => {
+      table.increments('id').primary();
+      table.string('total_price');
+      table.string('date_of_order');
     })
   ])
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('inventory')
+    knex.schema.dropTable('inventory'),
+    knex.schema.dropTable('order_history')
   ])
 };

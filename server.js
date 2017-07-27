@@ -35,6 +35,38 @@ app.get('/api/v1/inventory', (request, response) => {
   })
 })
 
+app.get('/api/v1/order_history', (request, response) => {
+  database('order_history').select()
+  .then(orders => {
+    if(orders) {
+      response.status(200).json(orders)
+    } else {
+      return response.status(400).json({
+        error: 'There are no orders'
+      }
+    )}
+  })
+  .catch(error => {
+    response.status(500).json({ error })
+  })
+})
+
+app.post('/api/v1/order_history', (request.response) => {
+  const order = request.body;
+
+  database('order_history').insert(order, 'id')
+  .then(order => {
+    if(order) {
+      response.status(201).json({ id: order[0] })
+    } else {
+      response.status(201).json({ error: 'You are missing a property'});
+    }
+  })
+  .catch(error => {
+    response.status(500).json({ error });
+  })
+})
+
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`)
 })
