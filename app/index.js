@@ -75,8 +75,14 @@ const getCartItems = () => {
   }
 }
 
-$('.expand-button').on('click', () => {
-  $('#item-section').toggleClass('hidden')
+$('#cart-icon-section').on('click', () => {
+  $('#cart-item-section').toggleClass('active');
+  $('#cart-icon-section').toggleClass('active');
+})
+
+$('#order-history').on('click', () => {
+  $('#order-section').toggleClass('active');
+  $('#order-history').toggleClass('active');
 })
 
 const getOrders = () => {
@@ -89,11 +95,9 @@ const getOrders = () => {
   .then(response => response.json())
   .then(orders => {
     orders.map(order => {
-      return $('.order-section').prepend(`
-        <div>
-          <p>${order.total_price}</p>
-          <p>${order.created_at}</p>
-        </div>
+      return $('#order-section').prepend(`
+          <p class="order-info">${order.total_price}</p>
+          <p class="order-info">${order.created_at}</p>
         `)
       })
   })
