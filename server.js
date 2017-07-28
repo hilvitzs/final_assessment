@@ -67,8 +67,8 @@ app.post('/api/v1/order_history', (request, response) => {
   })
 })
 
-app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+app.listen(app.get('port'), () => {
+  console.log(`${app.locals.title} is running on ${app.get('port')}.`)
+})
 
 module.exports = app;
