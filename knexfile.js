@@ -3,10 +3,10 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/amazonbay',
     migrations: {
-      directory: './db/migrations'
+      directory: __dirname + '/db/migrations'
     },
     seeds: {
-      directory: './db/seeds/dev'
+      directory: __dirname + '/db/seeds/dev'
     },
     useNullAsDefault: true
   },
@@ -28,6 +28,9 @@ module.exports = {
     connection: process.env.DATABASE_URL + `?ssl=true`,
     migrations: {
       directory: './db/migrations'
+    },
+    seeds: {
+      directory: __dirname + '/db/seeds/dev'
     },
     useNullAsDefault: true
   }
