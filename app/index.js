@@ -24,12 +24,10 @@ const prependInventoryItems = (array) => {
 
 
 $('#inventory-section').on('click', '#addtocart-button', function() {
-  let itemObject = {}
-
   const title = $(this).siblings('#title').text();
   const price = $(this).siblings('#price').text();
 
-  let newItemObject = Object.assign({}, itemObject, {
+  let newItemObject = Object.assign({}, {
     title,
     price
   })
@@ -94,9 +92,12 @@ const getOrders = () => {
   .then(response => response.json())
   .then(orders => {
     orders.map(order => {
+      let dateCreated = order.created_at.split('T')[0]
+      console.log(order.created_at.split('T')[0])
+
       return $('#order-section').prepend(`
           <p class="order-info">Order Total: $${order.total_price}</p>
-          <p class="order-info">Order Date: ${order.created_at}</p>
+          <p class="order-info">Order Date: ${dateCreated}</p>
         `)
       })
   })
