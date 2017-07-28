@@ -11,12 +11,7 @@ chai.use(chaiHttp)
 describe('API Routes', () => {
   before(done => {
   knex.migrate.latest()
-    .then(() => {
-      return knex.seed.run()
-    })
-    .then(() => {
-      done()
-    })
+    .then(() => { done() })
   })
 
   beforeEach(done => {
@@ -26,7 +21,7 @@ describe('API Routes', () => {
       })
   })
 
-  describe('/api/v1/inventory', () => {
+  describe('GET /api/v1/inventory', () => {
     it('should return a 404 for a route that does not exist', (done) => {
       chai.request(server)
         .get('/sad')
@@ -44,12 +39,16 @@ describe('API Routes', () => {
           response.should.be.json;
           response.body.should.be.a('array');
           response.body.length.should.equal(3);
+          response.body[0].should.have.property('title')
+          response.body[0].should.have.property('description')
+          response.body[0].should.have.property('image')
+          response.body[0].should.have.property('price')
           done();
         })
     });
   })
 
-  describe('/api/v1/inventory', () => {
+  describe('GET /api/v1/order_history', () => {
     it('should return a 404 for a route that does not exist', (done) => {
       chai.request(server)
         .get('/sad')
@@ -67,8 +66,31 @@ describe('API Routes', () => {
           response.should.be.json;
           response.body.should.be.a('array');
           response.body.length.should.equal(2);
+          response.body[0].should.have.property('total_price')
+          response.body[0].should.have.property('created_at')
+          response.body[0].should.have.property('updated_at')
           done();
         })
     });
   })
+
+  describe('POST /api/v1/order_history', () => {
+    it('should be able to post to the order_history database', (done) => {
+      chai.request(server)
+        .post('/api/v1/order_history')
+        .send({
+          id: 3,
+          total_price: 14.99
+        })
+        .end((err, response) => {
+          response.should.have.status(201);
+          response.body.should.be.a('object');
+          response.body.should.have.property('id');
+          response.body.id.should.equal(3);
+          done();
+        })
+    });
+  })
+
+
 });
