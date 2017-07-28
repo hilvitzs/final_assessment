@@ -67,8 +67,8 @@ app.post('/api/v1/order_history', (request, response) => {
   })
 })
 
-app.listen(port, () => {
-  console.log(`${app.locals.title} is running on ${port}}.`)
+app.listen(app.get('port'), () => {
+  console.log(`${app.locals.title} is running on ${app.get('port')}.`)
 })
 
 module.exports = app;
