@@ -30,7 +30,7 @@ module.exports = {
       directory: './db/migrations'
     },
     seeds: {
-      directory: __dirname + '/db/seeds/dev'
+      directory: './db/seeds/dev'
     },
     useNullAsDefault: true
   }
