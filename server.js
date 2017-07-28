@@ -25,7 +25,7 @@ app.get('/api/v1/inventory', (request, response) => {
     if(inventoryItems) {
       response.status(200).json(inventoryItems)
     } else {
-      return response.status(400).json({
+      return response.status(404).json({
         error: 'There are no inventoryItems'
       })
     }
@@ -41,7 +41,7 @@ app.get('/api/v1/order_history', (request, response) => {
     if(orders) {
       response.status(200).json(orders)
     } else {
-      return response.status(400).json({
+      return response.status(404).json({
         error: 'There are no orders'
       }
     )}

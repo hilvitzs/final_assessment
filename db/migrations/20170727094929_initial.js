@@ -11,7 +11,6 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable('order_history', (table) => {
       table.increments('id').primary();
       table.string('total_price');
-      table.string('order_date');
       table.timestamps(true, true);
     })
   ])
