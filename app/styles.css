@@ -53,7 +53,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: width 2s;
+  transition: width 0.3s;
 }
 
 #cart-icon-section.active {
@@ -70,19 +70,13 @@ h1 {
   width: 20px;
 }
 
-#cart-item-section {
-  width: 0%;
-}
-
-#cart-item-section.active {
-  width: 90%;
-  transition: width 2s;
-}
-
 #item-info-cart {
-  border: 1px solid black;
-  height: 448px;
-  padding: 25px;
+  width: 0;
+}
+
+#item-info-cart.active {
+  width: 90%;
+  transition: width 0.3s;
 }
 
 #order-history-section {
@@ -95,29 +89,35 @@ h1 {
 }
 
 #order-history {
-  width: 90%;
-  height: 500px;
+  width: 100%;
+  background-color: #f3a847;
+  transition: width 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  transition: width 0.3s;
 }
 
 #order-history.active {
-  width: 50%;
-  transition: width 2s;
+  width: 100%;
+  background-color: #f3a847;
+  transition: width 0.3s;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 #order-section {
-  width: 50%;
+  width: 0;
+  height: 448px;
+  transition: width 0.3s;
 }
 
 #order-section.active {
-  width: 100%;
+  width: 90%;
   height: 448px;
   padding: 25px;
-  transition: width 2s;
-}
-
-.order-info {
-  width: 100%;
+  transition: width 0.3s;
 }
