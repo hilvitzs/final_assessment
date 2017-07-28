@@ -93,10 +93,9 @@ const getOrders = () => {
   .then(orders => {
     orders.map(order => {
       let dateCreated = order.created_at.split('T')[0]
-      console.log(order.created_at.split('T')[0])
 
       return $('#order-section').prepend(`
-          <p class="order-info">Order Total: $${order.total_price}</p>
+          <p class="order-info">${order.total_price}</p>
           <p class="order-info">Order Date: ${dateCreated}</p>
         `)
       })
