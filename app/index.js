@@ -16,7 +16,7 @@ const prependInventoryItems = (array) => {
         <p id='description'>${inventoryItem.description}</p>
         <img id='item-image' src='${inventoryItem.image}'>
         <p id='price'>$${inventoryItem.price}</p>
-        <button id='addtocart-button'>Add to Card</button>
+        <button id='addtocart-button'>Add to Cart</button>
       </div>
     `)
   })
@@ -63,10 +63,9 @@ const getCartItems = () => {
       price.push(parseFloat(parsedItem.price.replace('$', '')))
 
       return $('.cart-items').append(`
-        <p>${parsedItem.title}</p>
-        <p>${parsedItem.price}</p>
+        <p>Item: ${parsedItem.title}</p>
+        <p>Item Price: ${parsedItem.price}</p>
         `)
-
       })
 
       let total = price.reduce((a, b) => a + b, 0);
@@ -76,7 +75,7 @@ const getCartItems = () => {
 }
 
 $('#cart-icon-section').on('click', () => {
-  $('#cart-item-section').toggleClass('active');
+  $('#item-info-cart').toggleClass('active');
   $('#cart-icon-section').toggleClass('active');
 })
 
@@ -96,15 +95,14 @@ const getOrders = () => {
   .then(orders => {
     orders.map(order => {
       return $('#order-section').prepend(`
-          <p class="order-info">${order.total_price}</p>
-          <p class="order-info">${order.created_at}</p>
+          <p class="order-info">Order Total: $${order.total_price}</p>
+          <p class="order-info">Order Date: ${order.created_at}</p>
         `)
       })
   })
 }
 
 $('#checkout-button').on('click', () => {
-  console.log('something');
   const total = $('#total').text();
 
   if(localStorage.length === 0) {

@@ -37,6 +37,11 @@ h1 {
   width: 90%;
 }
 
+#addtocart-button {
+  width: 100%;
+  height: 25px;
+  background-color: #f3a847;
+}
 
 #cart-section {
   position: absolute;
@@ -45,6 +50,7 @@ h1 {
   right: 0;
   height: 500px;
   width: 200px;
+  border: 1px solid black;
 }
 
 #cart-icon-section {
@@ -72,11 +78,13 @@ h1 {
 
 #item-info-cart {
   width: 0;
+  display: none;
 }
 
 #item-info-cart.active {
+  display: block;
   width: 90%;
-  transition: width 0.3s;
+  transition: display 0.3s;
 }
 
 #order-history-section {
