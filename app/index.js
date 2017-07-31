@@ -5,7 +5,7 @@ const getInventoryItems = () => {
   })
   .then(response => response.json())
   .then(inventoryItems => prependInventoryItems(inventoryItems))
-  .catch(error => {error})
+  .catch(error => console.log('There was a problem getting your inventory items'))
 }
 
 const prependInventoryItems = (array) => {
@@ -101,7 +101,7 @@ const getOrders = () => {
         `)
       })
   })
-  .catch(error => { error })
+  .catch(error => console.log('There was a problem getting your order history'))
 }
 
 $('#checkout-button').on('click', () => {
@@ -118,7 +118,7 @@ $('#checkout-button').on('click', () => {
       })
     })
     .then(() => getOrders())
-    .catch(error => { error })
+    .catch(error => console.log('There was a problem with your order'))
   }
 })
 
