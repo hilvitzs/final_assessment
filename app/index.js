@@ -80,6 +80,7 @@ $('#cart-icon-section').on('click', () => {
 $('#order-history').on('click', () => {
   $('#order-section').toggleClass('active');
   $('#order-history').toggleClass('active');
+  $('#order-history-section').toggleClass('active');
 })
 
 const getOrders = () => {

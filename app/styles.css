@@ -96,6 +96,11 @@ h1 {
   border: 1px solid black;
 }
 
+#order-history-section.active {
+  width: 20%;
+  transition: width 0.3s;
+}
+
 #order-history {
   width: 100%;
   background-color: #f3a847;
