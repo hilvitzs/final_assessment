@@ -90,7 +90,16 @@ describe('API Routes', () => {
           done();
         })
     });
+
+    it('should NOT be able to post without anything in the body', (done) => {
+      chai.request(server)
+        .post('/api/v1/order_history')
+        .send({})
+        .end((err, response) => {
+          response.should.have.status(422);
+          response.body.should.be.a('object');
+          done();
+        })
+    })
   })
-
-
 });

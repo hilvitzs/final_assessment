@@ -101,6 +101,7 @@ const getOrders = () => {
         `)
       })
   })
+  .catch(error => { error })
 }
 
 $('#checkout-button').on('click', () => {
@@ -117,6 +118,7 @@ $('#checkout-button').on('click', () => {
       })
     })
     .then(() => getOrders())
+    .catch(error => { error })
   }
 })
 

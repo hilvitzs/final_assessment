@@ -54,12 +54,18 @@ app.get('/api/v1/order_history', (request, response) => {
 app.post('/api/v1/order_history', (request, response) => {
   const order = request.body;
 
+  for (let requiredParameter of ['total_price']) {
+    if (!order[requiredParameter]) {
+      return response.status(422).json({
+        error: 'You are missing the total price property!'
+      });
+    }
+  }
+
   database('order_history').insert(order, 'id')
   .then(order => {
     if(order) {
       response.status(201).json({ id: order[0] })
-    } else {
-      response.status(201).json({ error: 'You are missing a property'});
     }
   })
   .catch(error => {
