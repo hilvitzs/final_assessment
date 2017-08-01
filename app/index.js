@@ -122,6 +122,9 @@ $('#checkout-button').on('click', () => {
     })
     .catch(error => console.log('There was a problem with your order'))
   }
+  $('.cart-items').empty()
+  $('#total').empty()
+  localStorage.clear()
 })
 
 
