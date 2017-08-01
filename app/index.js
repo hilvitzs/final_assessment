@@ -84,7 +84,7 @@ $('#order-history').on('click', () => {
 })
 
 const getOrders = () => {
-  $('.order-section').empty();
+  $('#order-section').empty();
 
   fetch('/api/v1/order_history', {
     method: 'GET',
@@ -117,7 +117,9 @@ $('#checkout-button').on('click', () => {
         total_price: total,
       })
     })
-    .then(() => getOrders())
+    .then(() => {
+      getOrders()
+    })
     .catch(error => console.log('There was a problem with your order'))
   }
 })
